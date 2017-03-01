@@ -2,58 +2,51 @@ package com.eetakemon.controller;
 
 import com.eetakemon.entity.Eetakemon;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 /**
  * Created by Home on 21/02/2017.
  */
 public class Controller
 {
-    private static List<Eetakemon> lista = new ArrayList<>();
-    private final int MAX = 50;
+    private static Map<Integer,Eetakemon> lista = new HashMap<>();
     public Controller()
     {
     }
 
     public boolean addEetakemon (Eetakemon e)
     {
-        if(lista.size() < MAX)
-        {
-            lista.add(e);
-            return true;
-        }
-        else return false;
+        if(lista.put(e.getId(),e)==null) return true;
+        return false;
     }
 
     public boolean delById (int id)
     {
-        boolean found = false;
-        for(int i=0; i < lista.size() && !found; i++)
-        {
-            Eetakemon e = lista.get(i);
-            if(e.getId() == id)
-            {
-                found = true;
-                lista.remove(i);
-            }
-        }
-        return found;
+        if(lista.remove(id)!=null) return true;
+        return false;
     }
 
     public List<Eetakemon> listEetakemon ()
     {
-        return lista;
+        List<Eetakemon> list = new ArrayList<>();
+        for (Eetakemon e:lista.values())
+            list.add(e);
+        return list;
     }
 
     public List<Eetakemon> searchByName (String name)
     {
-        List<Eetakemon> lista2 = new ArrayList<>();
-        for (Eetakemon e:lista)
+        List<Eetakemon> list = new ArrayList<>();
+        List<Eetakemon> list2 = new ArrayList<>();
+        for (Eetakemon e:lista.values())
+            list.add(e);
+        for (Eetakemon e:list)
         {
             if (e.getName().equals(name))
-                lista2.add(e);
+                list2.add(e);
         }
-        return lista2;
+        return list2;
     }
 }
 
