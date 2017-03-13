@@ -6,12 +6,16 @@ package com.eetakemon.entity;
 public class User
 {
     private String name;
-    private String pass;
+    private String passhash;
     private String mail;
+
+    public User ()
+    {
+    }
     public User (String name, String pass, String mail)
     {
         this.name = name;
-        this.pass = pass;
+        this.passhash = pass;
         this.mail = mail;
     }
 
@@ -22,11 +26,26 @@ public class User
 
     public String getPass()
     {
-        return pass;
+        return passhash;
     }
 
     public String getMail()
     {
         return mail;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public void setPass(String pass)
+    {
+        this.passhash = pass;
+    }
+
+    public void setMail(String mail)
+    {
+        this.mail = mail;
     }
 }

@@ -8,10 +8,10 @@ import java.util.Map;
 /**
  * Created by Home on 21/02/2017.
  */
-public class Controller
+public class EetakemonController
 {
     private static Map<Integer,Eetakemon> lista = new HashMap<>();
-    public Controller()
+    public EetakemonController()
     {
     }
 
@@ -38,15 +38,10 @@ public class Controller
     public List<Eetakemon> searchByName (String name)
     {
         List<Eetakemon> list = new ArrayList<>();
-        List<Eetakemon> list2 = new ArrayList<>();
-        for (Eetakemon e:lista.values())
-            list.add(e);
-        for (Eetakemon e:list)
-        {
-            if (e.getName().equals(name))
-                list2.add(e);
+        for (Eetakemon e:lista.values()) {
+            if (e.getName().equals(name)) list.add(e);
         }
-        return list2;
+        return list;
     }
 }
 
