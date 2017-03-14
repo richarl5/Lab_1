@@ -17,6 +17,7 @@ public class EetakemonControllerTest extends TestCase {
         super.setUp();
         e = new Eetakemon("Paco",1,1);
         con = new EetakemonController();
+        con.addEetakemon(e);
     }
 
     protected void tearDown() throws Exception {
@@ -29,18 +30,15 @@ public class EetakemonControllerTest extends TestCase {
     }
 
     public void testDelbyID() throws  Exception {
-        con.addEetakemon(e);
         assertEquals(true,con.delById(1));
     }
 
     public void testSearchByName() throws  Exception {
-        con.addEetakemon(e);
         lista = con.searchByName("Paco");
         assertTrue(lista != null);
     }
 
     public void testListEetakemon() throws  Exception {
-        con.addEetakemon(e);
         lista = con.listEetakemon();
         e = (Eetakemon) lista.get(0);
         assertEquals("Paco",e.getName());
